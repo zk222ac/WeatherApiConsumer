@@ -24,7 +24,7 @@ namespace WeatherApiConsumer.Services
             string path = _appconfig.Value.BuildUrl(cityName, isCityName);
             var response = await client.GetStringAsync(path);
             var retVal = JsonConvert.DeserializeObject<Weathers>(response);
-            retVal.Query = cityName;
+            retVal.QueryTerm = cityName;
             return retVal;
         }
     }

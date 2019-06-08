@@ -15,12 +15,12 @@ namespace WeatherApiConsumer.Model
 
         [JsonProperty("cnt")]
         internal int Count { get; set; }
-        [JsonProperty("CurrentTime")]
-        // Current Date and time
-        internal DateTime CurrentDate => DateTime.Now;
+
+        [JsonProperty("queryTime")]
+        internal DateTime QueryTime => DateTime.Now;
 
         [JsonProperty("queryTerm")]
-        internal string Query { get; set; }
+        internal string QueryTerm { get; set; }
 
         [JsonProperty("list")]
         //List of weatherData  
@@ -57,9 +57,8 @@ namespace WeatherApiConsumer.Model
             }
         }
 
+       
     }
-
-
     public class WeatherData
     {
         // #region Properties ..................................
@@ -87,12 +86,16 @@ namespace WeatherApiConsumer.Model
         [JsonProperty("wind")]
         internal Wind Wind { get; set; }
 
-        
+        [JsonProperty("weather")]
+        internal List<WeatherDetail> WeatherDetail { get; set; }
+
+
+
         //#endregion
     }
 
     #region Model Classes ................................................
-        internal class MainData
+    internal class MainData
         {
             [JsonProperty("temp")]
             internal decimal Temp { get; set; }
@@ -136,5 +139,26 @@ namespace WeatherApiConsumer.Model
             internal decimal Speed { get; set; }
         }
 
-        #endregion
+    internal class WeatherDetail
+    {
+        [JsonProperty("id")]
+        internal uint WeatherId { get; set; }
+
+        [JsonProperty("main")]
+        public string MainDesc { get; set; }
+
+        [JsonProperty("description")]
+        public string DetailedDesc { get; set; }
+
+        [JsonProperty("icon")]
+        public string IconCode { get; set; }
+        /// <summary>
+        /// String interpolation to ease getting weather image of current weather condition on UI
+        /// </summary>
+        [JsonProperty("iconUrl")]
+        public string IconUrl => $"http://openweathermap.org/img/w/{IconCode}.png";
+    }
+
+
+    #endregion
 }
