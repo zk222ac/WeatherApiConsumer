@@ -11,11 +11,11 @@ namespace WeatherApiConsumer.Controllers
     {
         [Route("[Action]/{cityName}")]
         [HttpGet]
-        public async Task<ActionResult<Weathers>> GetByCityName(string cityName,[FromServices] IWeatherServices wsvc) =>await wsvc.GetWeatherResults(cityName, true);
+        public async Task<ActionResult<OpenWeatherForecastModel>> GetByCityName(string cityName,[FromServices] IWeatherServices wsvc) =>await wsvc.GetWeatherResults(cityName, true);
 
         [Route("[Action]/{zipCode}")]
         [HttpGet]
-        public async Task<ActionResult<Weathers>> GetByZipCode(string zipCode, [FromServices] IWeatherServices wsvc) => await wsvc.GetWeatherResults(zipCode, false);
+        public async Task<ActionResult<OpenWeatherForecastModel>> GetByZipCode(string zipCode, [FromServices] IWeatherServices wsvc) => await wsvc.GetWeatherResults(zipCode, false);
 
     }
 }

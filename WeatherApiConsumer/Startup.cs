@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WeatherApiConsumer.ExceptionHandler;
+using WeatherApiConsumer.Configuration;
 using WeatherApiConsumer.Services;
 
 namespace WeatherApiConsumer
@@ -52,7 +52,7 @@ namespace WeatherApiConsumer
             app.UseHttpsRedirection();
             // Here we inject the Exception handling services 
             // to check the bad request , this is centralize for all
-            app.UseMiddleware(typeof(CheckEachHttpRequest));
+            app.UseMiddleware(typeof(ExceptionHandler.ExceptionHandler));
             app.UseMvc();
         }
     }

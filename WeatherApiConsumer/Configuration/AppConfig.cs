@@ -1,12 +1,16 @@
 ﻿using System.Net;
 
-namespace WeatherApiConsumer
+namespace WeatherApiConsumer.Configuration
 {
+    /// <summary>
+    /// Wraps AppConfig section at appsettings.json
+    /// IOptions<AppConfig> injected controllers can easily access all below properties and method.
+    /// </summary>
     public class AppConfig
     {
         public AppConfig()
         {
-            
+            // Lazy loading can be observed by placing a break-point here.
         }
         public string ApiKey { get; set; }
         public string ApiUrlBody { get; set; }
@@ -22,9 +26,7 @@ namespace WeatherApiConsumer
             }
             else
             {
-                //return $"{ApiUrlBody}?zip={param},de&mode={ResponseMode}&appid={ApiKey}&units={UnitType}";
-                 return $"{ApiUrlBody}?zip={param}&appid={ApiKey}&units={UnitType}";
-
+                return $"{ApiUrlBody}?zip={param},de&mode={ResponseMode}&appid={ApiKey}&units={UnitType}";
             }
 
         }

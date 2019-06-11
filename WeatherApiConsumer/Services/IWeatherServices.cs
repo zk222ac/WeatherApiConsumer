@@ -5,6 +5,6 @@ namespace WeatherApiConsumer.Services
 {
     public interface IWeatherServices
     {
-        Task<Weathers> GetWeatherResults(string cityName, bool isCityName);
+        Task<OpenWeatherForecastModel> GetWeatherResults(string cityName, bool isCityName);
     }
 }
